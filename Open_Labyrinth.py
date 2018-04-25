@@ -11,7 +11,6 @@ def open_labyrinth(maze_map):
         # k - dict key
         for k, v in direction_dict.items():
             i, j = v[0], v[1]
-
             if i == 10 and j == 10:
                 direct.append(k)
                 direct.append('end')
@@ -23,8 +22,8 @@ def open_labyrinth(maze_map):
                     dfs(i, j)
         if check == 0:
             direct.pop(-1)
-            x = direct_point[direct_point.index([row, col]) - 1]
-            dfs(x[0], x[1])
+            back_point = direct_point[direct_point.index([row, col]) - 1]
+            dfs(back_point[0], back_point[1])
     dfs(row, col)
     return ''.join(direct[0 : direct.index('end')])
 
